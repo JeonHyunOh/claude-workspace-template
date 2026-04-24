@@ -1,0 +1,20 @@
+# 민감 정보
+.env
+*.key
+secrets.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 에디터
+.vscode/
+.idea/
+
+# 임시 파일
+*.tmp
+*.log
+~$*
+
+# OMC 내부 상태
+.omc/
