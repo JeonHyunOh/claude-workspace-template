@@ -22,19 +22,35 @@
 노션 MCP가 연결되어 있나요?
 Claude Desktop → 설정 → 통합(Integrations) 에서 Notion이 연결되어 있어야 합니다.
 
-연결됐다면 노션 메인 페이지 URL을 붙여넣어 주세요.
+연결됐다면 워크스페이스로 사용할 노션 페이지 URL을 붙여넣어 주세요.
+(빈 페이지여도 됩니다. 구조를 잡아드릴게요.)
 ```
 
 - `notion-fetch`로 페이지 접근 확인
 - 접근 실패 시 → "Notion MCP 연결을 먼저 확인해주세요." 안내 후 중단
 
+### 2.5단계 — 노션 페이지 구조 자동 생성
+
+메인 페이지 하위에 아래 구조를 자동으로 만든다:
+
 ```
-업무 일지 DB URL을 붙여넣어 주세요.
-(없으면 메인 페이지 하위에 제가 만들어드릴게요.)
+{메인 페이지}
+├── 📋 업무 일지 (DB)   ← notion-create-database
+├── 📝 회의록           ← notion-create-pages
+└── 💼 업무 메모        ← notion-create-pages
 ```
 
-- DB가 있으면 → `notion-fetch`로 data-source ID 확인
-- DB가 없으면 → `notion-create-database`로 업무 일지 DB 생성
+- `notion-create-database` — 업무 일지 DB 생성 (제목, 날짜, 상태, OKR 속성 포함)
+- `notion-create-pages` — 회의록 페이지 생성 (빈 페이지, 회의록 보관용)
+- `notion-create-pages` — 업무 메모 페이지 생성 (빈 페이지, 메모 보관용)
+- 생성 완료 후 각 페이지 URL/ID를 `.claude/notion-pages.md`에 기록
+
+이미 페이지가 있는 경우:
+```
+이미 사용 중인 노션 페이지가 있으신가요?
+각 항목의 URL을 붙여넣어 주시면 연결해드릴게요.
+(없는 항목만 새로 만들겠습니다.)
+```
 
 ### 3단계 — 파일 자동 생성
 
