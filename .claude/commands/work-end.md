@@ -2,7 +2,7 @@
 
 ## 핵심 정보
 - 업무 일지 DB data-source: `.claude/notion-pages.md` 참조
-- 현재 스프린트 URL: `.claude/notion-pages.md` 업무 일지 항목 참조
+- 현재 스프린트 URL: `.claude/notion-pages.md` `🏃 스프린트 (현재)` 섹션 참조
 
 ## 실행 흐름
 
@@ -14,7 +14,7 @@
    - "오늘 완료한 것은 무엇인가요?"
    - "못한 것은 무엇인가요?"
    - "배운 점이나 메모할 것 있나요?"
-5. 사용자 답변 기반으로 오늘 일별 항목 업데이트 (`notion-update-page`, `update_content`):
+5. 사용자 답변 기반으로 오늘 일별 항목 업데이트 (`notion-update-data-source`):
    ```
    ## 📋 오늘 할 일
    - [x] 완료 항목
@@ -30,7 +30,7 @@
    ## 💡 배운 점 / 메모
    - 사용자 입력 내용
    ```
-6. 현재 스프린트 항목도 업데이트 (`notion-fetch` → `update_content`):
+6. 현재 스프린트 항목도 업데이트 (`notion-fetch` → `notion-update-data-source`):
    - 완료된 태스크 체크박스 체크 처리
 7. 내일 할 일 제안 (이월 포함):
    ```
@@ -43,7 +43,7 @@
 8. 확인 후 내일 일별 항목 미리 생성 여부 질문 (선택)
 
 ## 규칙
-- `update_content` 시 `old_str`은 반드시 `notion-fetch` 결과에서 정확히 복사
+- `notion-update-data-source` 시 `old_str`은 반드시 `notion-fetch` 결과에서 정확히 복사
 - 스프린트 체크박스 업데이트는 fetch → 정확한 old_str 확인 후 진행
 - 완료 후 페이지 URL 안내
 - 금요일이면 → 스프린트 항목 상태를 "완료"로 변경 제안
