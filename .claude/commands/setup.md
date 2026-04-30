@@ -41,6 +41,7 @@ Claude Desktop → 설정 → 통합(Integrations) 에서 Notion이 연결되어
 ```
 
 - `notion-create-database` — 업무 일지 DB 생성 (제목, 날짜, 상태, OKR 속성 포함)
+  - 응답에서 반환된 DB ID를 data-source ID로 사용 → `notion-pages.md`에 기록
 - `notion-create-pages` — 회의록 페이지 생성 (빈 페이지, 회의록 보관용)
 - `notion-create-pages` — 업무 메모 페이지 생성 (빈 페이지, 메모 보관용)
 - 생성 완료 후 각 페이지 URL/ID를 `.claude/notion-pages.md`에 기록
